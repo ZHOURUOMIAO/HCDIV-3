@@ -3,9 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World</title>
+    <title>Average Resale Price of HDB Flats (2015)</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        p {
+            text-align: center;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        canvas {
+            max-width: 90%;
+            height: auto;
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello World</h1>
+    <h1>Average Resale Price of Four-Bedroom HDB Flats in Singapore (2015)</h1>
+    <p>
+        This line chart illustrates the monthly trend of the average resale price of four-bedroom HDB flats in Singapore for the year 2015. The prices are displayed in Singapore Dollars (SGD), showcasing slight fluctuations throughout the year, with values ranging between 424,000 and 439,000 SGD.
+    </p>
+    <canvas id="priceChart"></canvas>
+
+    <script>
+        // Data for the chart
+        const labels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        const data = [439014.59, 439245.53, 427119.90, 435514.84, 433867.74, 435355.82, 424313.08, 432846.19, 434279.05, 429998.26, 430503.50, 431815.73];
+
+        // Chart configuration
+        const config = {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Average Price (SGD)',
+                    data: data,
+                    borderColor: 'blue',
+                    backgroundColor: 'rgba(0, 0, 255, 0.1)',
+                    tension: 0.3,
+                    pointStyle: 'circle',
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                        labels: {
+                            font: {
+                                size: 12
+                            }
+                        }
+                    },
+                    tooltip: {
+                        enabled: true
+                    }
+                },
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Month',
+                            font: {
+                                size: 14
+                            }
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Average Price (SGD)',
+                            font: {
+                                size: 14
+                            }
+                        },
+                        min: 420000,
+                        max: 440000,
+                        ticks: {
+                            stepSize: 2000
+                        }
+                    }
+                }
+            }
+        };
+
+        // Render the chart
+        const ctx = document.getElementById('priceChart').getContext('2d');
+        new Chart(ctx, config);
+    </script>
 </body>
 </html>
+
