@@ -41,11 +41,9 @@
     <canvas id="priceChart"></canvas>
 
     <script>
-        // Data for the chart
         const labels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
         const data = [439014.59, 439245.53, 427119.90, 435514.84, 433867.74, 435355.82, 424313.08, 432846.19, 434279.05, 429998.26, 430503.50, 431815.73];
 
-        // Chart configuration
         const config = {
             type: 'line',
             data: {
@@ -109,12 +107,12 @@
             }
         };
 
-        // Render the chart
         const ctx = document.getElementById('priceChart').getContext('2d');
         new Chart(ctx, config);
     </script>
 </body>
 </html>
+
 
 
 
