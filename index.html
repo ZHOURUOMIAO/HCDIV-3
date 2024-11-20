@@ -114,15 +114,19 @@
 
             if (index !== -1) {
                 const updatedData = data.map((value, idx) => idx === index ? value : null);
-                chart.data.datasets[0].data = updatedData; 
+                chart.data.datasets[0].data = updatedData;
+                chart.data.datasets[0].type = 'bar';
+                chart.data.datasets[0].backgroundColor = 'green'; 
+                chart.update();
+            } else {
+                chart.data.datasets[0].data = data;
+                chart.data.datasets[0].type = 'line';
                 chart.update();
             }
         });
     </script>
 </body>
 </html>
-
-
 
 
 
