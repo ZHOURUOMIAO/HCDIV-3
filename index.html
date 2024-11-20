@@ -62,8 +62,14 @@
             options: {
                 responsive: true,
                 animation: {
-                    duration: 8000,
+                    duration: 10000,
                     easing: 'easeOutBounce',
+                    onProgress: function(animation) {
+                        console.log('Animation in Progress:', animation);
+                    },
+                    onComplete: function(animation) {
+                        console.log('Animation Complete:', animation);
+                    }
                 },
                 plugins: {
                     legend: {
@@ -112,6 +118,7 @@
     </script>
 </body>
 </html>
+
 
 
 
