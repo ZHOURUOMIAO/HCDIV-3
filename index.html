@@ -6,8 +6,10 @@
     <title>Average Resale Price of HDB Flats (2015)</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
@@ -15,16 +17,17 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
-            background-color: #f9f9f9;
+            background-color: black;
+            color: white;
         }
         h1 {
             text-align: center;
-            font-size: 24px;
+            font-size: 30px;
             margin-bottom: 10px;
         }
         p {
             text-align: center;
-            font-size: 16px;
+            font-size: 18px;
             margin-bottom: 20px;
         }
         canvas {
@@ -41,20 +44,19 @@
     <canvas id="priceChart"></canvas>
 
     <script>
-        // Data for the chart
         const labels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-        const data = [439014.59, 439245.53, 427119.90, 435514.84, 433867.74, 435355.82, 424313.08, 432846.19, 434279.05, 429998.26, 430503.50, 431815.73];
+        const data = [439014.59, 439245.53, 427119.90, 435514.84, 433867.74, 
+                      435355.82, 424313.08, 432846.19, 434279.05, 429998.26, 
+                      430503.50, 431815.73];
 
-        // Chart configuration
         const config = {
             type: 'line',
             data: {
                 labels: labels,
                 datasets: [{
-                    label: 'Average Price (SGD)',
                     data: data,
-                    borderColor: 'blue',
-                    backgroundColor: 'rgba(0, 0, 255, 0.1)',
+                    borderColor: 'green',
+                    backgroundColor: 'rgba(0, 255, 0, 0.2)',
                     tension: 0.3,
                     pointStyle: 'circle',
                     pointRadius: 5,
@@ -65,50 +67,27 @@
                 responsive: true,
                 plugins: {
                     legend: {
-                        display: true,
-                        position: 'top',
-                        labels: {
-                            font: {
-                                size: 12
-                            }
-                        }
+                        display: false,
                     },
                     tooltip: {
-                        enabled: true
+                        enabled: false,
                     }
                 },
                 scales: {
                     x: {
-                        title: {
-                            display: true,
-                            text: 'Month',
-                            font: {
-                                size: 14
-                            }
-                        }
+                        display: false,
                     },
                     y: {
-                        title: {
-                            display: true,
-                            text: 'Average Price (SGD)',
-                            font: {
-                                size: 14
-                            }
-                        },
-                        min: 420000,
-                        max: 440000,
-                        ticks: {
-                            stepSize: 2000
-                        }
+                        display: false,
                     }
                 }
             }
         };
 
-        // Render the chart
         const ctx = document.getElementById('priceChart').getContext('2d');
         new Chart(ctx, config);
     </script>
 </body>
 </html>
+
 
