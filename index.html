@@ -51,14 +51,7 @@
                 datasets: [{
                     label: 'Average Price (SGD)',
                     data: data,
-                    borderColor: function(context) {
-                        const index = context.dataIndex;
-                        const color = [
-                            'red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet', 
-                            'red', 'orange', 'yellow', 'green', 'blue'
-                        ];
-                        return color[index];
-                    },
+                    borderColor: 'green',
                     backgroundColor: 'rgba(0, 255, 0, 0.1)',
                     tension: 0.3,
                     pointStyle: 'circle',
@@ -69,7 +62,7 @@
             options: {
                 responsive: true,
                 animation: {
-                    duration: 8000,
+                    duration: 6000,
                     easing: 'easeOutBounce',
                 },
                 plugins: {
@@ -83,7 +76,10 @@
                         }
                     },
                     tooltip: {
-                        enabled: true
+                        enabled: true,
+                        animation: {
+                            duration: 6000,
+                        }
                     }
                 },
                 scales: {
@@ -119,7 +115,6 @@
     </script>
 </body>
 </html>
-
 
 
 
