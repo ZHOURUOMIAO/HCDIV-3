@@ -75,6 +75,17 @@
                     duration: 6000,
                     easing: 'easeOutBounce',
                 },
+                plugins: {
+                    tooltip: {
+                        enabled: true,
+                        mode: 'nearest',
+                        intersect: false,
+                        backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                        titleColor: '#fff',
+                        bodyColor: '#fff',
+                        padding: 10
+                    },
+                },
                 scales: {
                     x: {
                         title: {
@@ -113,13 +124,22 @@
             const index = labels.findIndex(label => label.toLowerCase() === searchTerm);
 
             if (index !== -1) {
-                chart.data.datasets[0].data = [data[index]]; // Update the data for the selected month
-                chart.update(); // Update the chart
+                const updatedData = [...data];
+                updatedData.forEach((value, idx) => {
+                    updatedData[idx] = idx === index ? value : null;
+                });
+
+                chart.data.datasets[0].data = updatedData;
+                chart.update();
+
+                chart.options.plugins.tooltip.enabled = true;
+                chart.update();
             }
         });
     </script>
 </body>
 </html>
+
 
 
 
