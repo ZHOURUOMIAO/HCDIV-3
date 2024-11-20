@@ -51,8 +51,8 @@
                 datasets: [{
                     label: 'Average Price (SGD)',
                     data: data,
-                    borderColor: 'blue',
-                    backgroundColor: 'rgba(0, 0, 255, 0.1)',
+                    borderColor: 'green',
+                    backgroundColor: 'rgba(0, 255, 0, 0.1)',
                     tension: 0.3,
                     pointStyle: 'circle',
                     pointRadius: 5,
@@ -63,7 +63,7 @@
                 responsive: true,
                 animation: {
                     duration: 10000,
-                    easing: 'easeOutElastic',
+                    easing: 'easeOutBounce',
                     onProgress: function(animation) {
                         console.log('Animation in Progress:', animation);
                     },
@@ -118,6 +118,7 @@
     </script>
 </body>
 </html>
+
 
 
 
