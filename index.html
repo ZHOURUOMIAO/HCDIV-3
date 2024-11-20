@@ -15,7 +15,7 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
-            background: linear-gradient(to bottom, #e6f7e6, #ffffff); 
+            background: linear-gradient(to bottom, #e6f7e6, #ffffff);
         }
         h1 {
             text-align: center;
@@ -40,10 +40,10 @@
             border-radius: 4px;
             border: 1px solid #ccc;
         }
-        .note {
+        .description {
             font-size: 12px;
             color: #888;
-            margin-bottom: 20px;
+            text-align: center;
         }
     </style>
 </head>
@@ -53,7 +53,7 @@
         This line chart illustrates the monthly trend of the average resale price of four-bedroom HDB flats in Singapore for the year 2015. The prices are displayed in Singapore Dollars (SGD), showcasing slight fluctuations throughout the year, with values ranging between 424,000 and 439,000 SGD.
     </p>
     <input type="text" id="searchInput" placeholder="Search for a month (e.g. Jan)">
-    <div class="note">After searching a month, only the average value for that month will be displayed in the form of a bar chart.</div>
+    <div class="description">Search for a month to display the average resale price in a bar chart form.</div>
     <canvas id="priceChart"></canvas>
 
     <script>
@@ -78,7 +78,8 @@
             options: {
                 responsive: true,
                 animation: {
-                    duration: 0
+                    duration: 6000,
+                    easing: 'easeOutBounce',
                 },
                 scales: {
                     x: {
@@ -118,14 +119,7 @@
             const index = labels.findIndex(label => label.toLowerCase() === searchTerm);
 
             if (index !== -1) {
-                const updatedData = data.map((value, idx) => idx === index ? value : null);
-                chart.data.datasets[0].data = updatedData;
-                chart.data.datasets[0].type = 'bar';
-                chart.data.datasets[0].backgroundColor = 'green'; 
-                chart.update();
-            } else {
-                chart.data.datasets[0].data = data;
-                chart.data.datasets[0].type = 'line';
+                chart.data.datasets[0].data = [data[index]];
                 chart.update();
             }
         });
