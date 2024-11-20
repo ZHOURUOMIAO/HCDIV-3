@@ -40,6 +40,11 @@
             border-radius: 4px;
             border: 1px solid #ccc;
         }
+        .note {
+            font-size: 14px;
+            color: #555;
+            margin-top: 5px;
+        }
     </style>
 </head>
 <body>
@@ -48,6 +53,7 @@
         This line chart illustrates the monthly trend of the average resale price of four-bedroom HDB flats in Singapore for the year 2015. The prices are displayed in Singapore Dollars (SGD), showcasing slight fluctuations throughout the year, with values ranging between 424,000 and 439,000 SGD.
     </p>
     <input type="text" id="searchInput" placeholder="Search for a month (e.g. Jan)">
+    <div class="note">After searching a month, only the average value for that month will be displayed in the form of a bar chart.</div>
     <canvas id="priceChart"></canvas>
 
     <script>
@@ -126,5 +132,6 @@
     </script>
 </body>
 </html>
+
 
 
