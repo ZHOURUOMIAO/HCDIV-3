@@ -119,12 +119,14 @@
             const index = labels.findIndex(label => label.toLowerCase() === searchTerm);
 
             if (index !== -1) {
-                chart.data.datasets[0].data = [data[index]];
+                chart.data.datasets[0].type = 'bar';  // Switch to bar chart
+                chart.data.datasets[0].data = [data[index]];  // Display the selected month's data
                 chart.update();
             }
         });
     </script>
 </body>
 </html>
+
 
 
