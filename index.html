@@ -113,8 +113,9 @@
             const index = labels.findIndex(label => label.toLowerCase() === searchTerm);
 
             if (index !== -1) {
-                chart.data.datasets[0].data = [data[index]]; // Update the data for the selected month
-                chart.update(); // Update the chart
+                const updatedData = data.map((value, idx) => idx === index ? value : null);
+                chart.data.datasets[0].data = updatedData; 
+                chart.update();
             }
         });
     </script>
