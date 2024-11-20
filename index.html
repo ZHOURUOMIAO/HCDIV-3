@@ -15,7 +15,7 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
-            background-color: white;
+            background: linear-gradient(to bottom, #e6f7e6, #ffffff); 
         }
         h1 {
             text-align: center;
@@ -26,6 +26,8 @@
             text-align: center;
             font-size: 16px;
             margin-bottom: 20px;
+            width: 90%;
+            max-width: 800px;
         }
         canvas {
             max-width: 90%;
@@ -88,7 +90,8 @@
                             display: true,
                             text: 'Month',
                             font: {
-                                size: 14
+                                size: 14,
+                                weight: 'bold'
                             }
                         }
                     },
@@ -97,7 +100,8 @@
                             display: true,
                             text: 'Average Price (SGD)',
                             font: {
-                                size: 14
+                                size: 14,
+                                weight: 'bold'
                             }
                         },
                         min: 420000,
@@ -115,6 +119,7 @@
     </script>
 </body>
 </html>
+
 
 
 
