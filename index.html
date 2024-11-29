@@ -15,7 +15,7 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
-            background: linear-gradient(to bottom, #e6f7e6, #ffffff);
+            background: linear-gradient(to bottom, #e6f7e6, #ffffff); 
         }
         h1 {
             text-align: center;
@@ -45,22 +45,6 @@
             color: #888;
             margin-bottom: 20px;
         }
-        table {
-            border-collapse: collapse;
-            margin: 20px 0;
-            font-size: 14px;
-            width: 70%;
-            max-width: 600px;
-            background-color: #fff;
-        }
-        th, td {
-            border: 1px solid #ccc;
-            padding: 8px;
-            text-align: center;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
     </style>
 </head>
 <body>
@@ -71,43 +55,11 @@
     <input type="text" id="searchInput" placeholder="Search for a month (e.g. Jan)">
     <div class="note">After searching a month, only the average value for that month will be displayed in the form of a bar chart.</div>
     <canvas id="priceChart"></canvas>
-    <table>
-        <thead>
-            <tr>
-                <th>Month</th>
-                <th>Average Price (SGD)</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Jan</td>
-                <td>439,014.59</td>
-            </tr>
-            <tr>
-                <td>Feb</td>
-                <td>439,245.53</td>
-            </tr>
-            <tr>
-                <td>Mar</td>
-                <td>427,119.90</td>
-            </tr>
-            <tr>
-                <td>Apr</td>
-                <td>435,514.84</td>
-            </tr>
-            <tr>
-                <td>May</td>
-                <td>433,867.74</td>
-            </tr>
-            <tr>
-                <td>Jun</td>
-                <td>435,355.82</td>
-            </tr>
-        </tbody>
-    </table>
+
     <script>
         const labels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
         const data = [439014.59, 439245.53, 427119.90, 435514.84, 433867.74, 435355.82, 424313.08, 432846.19, 434279.05, 429998.26, 430503.50, 431815.73];
+
         const config = {
             type: 'line',
             data: {
@@ -126,7 +78,7 @@
             options: {
                 responsive: true,
                 animation: {
-                    duration: 2000,
+                    duration: 2000, 
                     easing: 'easeOutQuad'
                 },
                 scales: {
@@ -158,16 +110,19 @@
                 }
             }
         };
+
         const ctx = document.getElementById('priceChart').getContext('2d');
         const chart = new Chart(ctx, config);
+
         document.getElementById('searchInput').addEventListener('input', function(event) {
             const searchTerm = event.target.value.trim().toLowerCase();
             const index = labels.findIndex(label => label.toLowerCase() === searchTerm);
+
             if (index !== -1) {
                 const updatedData = data.map((value, idx) => idx === index ? value : null);
                 chart.data.datasets[0].data = updatedData;
                 chart.data.datasets[0].type = 'bar';
-                chart.data.datasets[0].backgroundColor = 'green';
+                chart.data.datasets[0].backgroundColor = 'green'; 
                 chart.update();
             } else {
                 chart.data.datasets[0].data = data;
